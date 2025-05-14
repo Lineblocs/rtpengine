@@ -7,6 +7,7 @@ RUN apt update && apt install -y \
     pkg-config \
     gperf \
     pandoc \
+    curl \
     libglib2.0-dev \
     libjson-glib-dev \
     libavcodec-dev \
@@ -29,6 +30,10 @@ RUN apt update && apt install -y \
     libhiredis-dev \
     xmlstarlet \
     bc
+
+# Download netdiscover
+RUN curl -qL -o /usr/bin/netdiscover https://github.com/CyCoreSystems/netdiscover/releases/download/v1.2.3/netdiscover.linux.amd64
+RUN chmod +x /usr/bin/netdiscover
 
 # Clone and build RTPengine
 RUN git clone https://github.com/sipwise/rtpengine.git /rtpengine && \
