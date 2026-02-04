@@ -1,0 +1,10 @@
+services:
+  rtpengine:
+    build: .
+    container_name: rtpengine
+    network_mode: "host"     # REQUIRED
+    restart: always
+    env_file:
+      - .env
+    volumes:
+      - ./recordings:/var/spool/rtpengine
